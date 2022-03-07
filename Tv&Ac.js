@@ -5,26 +5,15 @@ objects=[];
 function preload(){
 img=loadImage('Tv&Ac.jpg');
 }
+
 function setup(){
     canvas=createCanvas(640,420);
     canvas.center()
     objectDetector=ml5.objectDetector('cocossd',modelLoaded);
     document.getElementById("status").innerHTML="Status : Detecting Object";
-}
-function draw(){
-    image(img,0,0,640,420);
-    fill("#FFFFFF");
-    text("AC",250,20);
-    noFill();
-    stroke("#ff0066");
-    rect(240,5,300,150);
 
-        fill("#ff0066");
-        text("TV",240,200);
-        noFill();
-        stroke("#ff0066");
-    rect(240,180,300,150);
 }
+
 function modelLoaded(){
     console.log("Model Loaded");
     status=true;
@@ -35,5 +24,26 @@ function gotResults(error,results){
         console.error();
     }
 console.log(results);
+objects=results;
 
+}
+function draw(){
+    image(img,0,0,640,420);
+if(status != ""){
+for(i=0; i < objects.length ;i++){
+fill("#ff0000");
+percentage=floor(objects[i].confidence*100);
+noFill()
+stroke("#ff0000");
+label=objects[i].label;
+x=objects[i].x;
+y=objects[i].y;
+width=objects[i].width;
+height=objects[i].height;
+text(label+" "+percentage+"%",x+15,y+15);
+rect(x,y,width,height);
+
+}
+
+}
 }
