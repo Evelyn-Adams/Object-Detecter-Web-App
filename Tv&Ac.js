@@ -1,5 +1,6 @@
 img="";
 status="";
+objects=[];
 
 function preload(){
 img=loadImage('Tv&Ac.jpg');

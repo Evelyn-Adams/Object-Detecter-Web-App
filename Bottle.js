@@ -1,5 +1,7 @@
 img="";
 status="";
+objects=[];
+
 
 function preload(){
 img=loadImage('Bottles.jpg');
