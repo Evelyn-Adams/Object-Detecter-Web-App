@@ -42,6 +42,7 @@ width=objects[i].width;
 height=objects[i].height;
 text(label+" "+percentage+"%",x+15,y+15);
 rect(x,y,width,height);
+document.getElementById("status").innerHTML="Object is detected";
 
 }
 

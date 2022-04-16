@@ -27,9 +27,11 @@ objects=results;
 
 }
 function draw(){
-    image(img,0,0,640,420);
+    
 if(status != ""){
+    image(img,0,0,640,420);
 for(i=0; i < objects.length ;i++){
+    document.getElementById("status").innerHTML="Status : Object Detected";
 fill("#ff0000");
 percentage=floor(objects[i].confidence*100);
 noFill()
@@ -41,6 +43,7 @@ width=objects[i].width;
 height=objects[i].height;
 text(label+" "+percentage+"%",x+15,y+15);
 rect(x,y,width,height);
+document.getElementById("status").innerHTML="Object is detected";
 
 }
 
